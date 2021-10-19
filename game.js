@@ -6,7 +6,7 @@ class Game {
     constructor() {
       this.playerOne = new Player("Mike");
       this.playerTwo = new Player("Nevin");
-  
+      
       this.dice = [];
   
       this.dice.push(new Die(4));
