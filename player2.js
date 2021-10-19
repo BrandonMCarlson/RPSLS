@@ -1,4 +1,4 @@
-const Player = require("./player");
+const PlayerOne = require("./player");
 let prompt = require('prompt-sync');
 
 

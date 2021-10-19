@@ -1,11 +1,10 @@
-const Player = require("./player");
+const PlayerOne = require("./player");
 
 class Ai extends PlayerOne {
   
     constructor(name) {
       super(name);
 
-      this.score = score;
     }
 }
 
