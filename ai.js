@@ -5,7 +5,7 @@ class Ai extends Player {
     constructor(name) {
       super(name);
 
-      this.score = 0;
+      this.score = score;
     }
 }
 
