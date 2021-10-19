@@ -1,6 +1,11 @@
 const Player = require('./player');
 const Die = require('./die');
+let prompt = require('prompt-sync');
 
+let rollDice = prompt("Please select 1-5 for your 'weapon' of choice this round.");
+rollDice();
+
+let RPSLS = ["rock", "paper", "scissors", "lizard", "spock"]
 
 class Game {
     constructor() {
