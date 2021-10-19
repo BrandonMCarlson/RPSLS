@@ -1,22 +1,39 @@
 const Player = require('./player');
 const Die = require('./die');
 let prompt = require('prompt-sync');
+const Ai = require('./ai');
 let userInput = prompt();
 
 let RPSLS = ["rock", "paper", "scissors", "lizard", "spock"]
 
 class Game {
-    constructor(gesture) {
+    constructor(gesture, score) {
     this.gesture = gesture;
-
+    this.score = score;  
     }
     runMain() {
-      this.playerSelect();
-      this.war();
+      if(this.whoPlays() === 1){
+        let ai = new Ai("Bob the PC");
+        console.log (`${ai.name} usually dominates their opponent.`);
+        this.aiRandomRolls(ai);
+      }
     }
-    playerSelect(){
-      prompt("You will now select a number between 1 and 5. 1 = rock /n 2 = paper /n 3 = scissors /n 4 = lizard /n 5 = spock");
+    whoPlays(){
+      let playerOne = new Player("Player One");
+      playerOne.name = playerOne.setName();
+
+      if(this.playerNumber > 1){
+        let playerTwo = new Player("Player Two")
+        playerTwo.name  = playerTwo.setName();
+        console.log(`Welcome ${playerOne.name} and ${playerTwo.name}.`)
+        return 2;
+      }
+      else{
+        console.log(`Welcome ${playerOne.name}`);
+        return 1;
+      }
     }
+    
     
 }
   module.exports = Game

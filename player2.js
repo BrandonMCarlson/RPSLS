@@ -1,11 +1,13 @@
 const Player = require("./player");
+let prompt = require('prompt-sync');
 
-class PlayerTwo extends Player {
+
+class PlayerTwo extends PlayerOne {
     constructor(name) {
       super(name);
-      this.score = score;
-      this.name = name;
+      
     }
+
  }
 
 module.exports = PlayerTwo

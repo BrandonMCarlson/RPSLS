@@ -1,6 +1,6 @@
 const Player = require("./player");
 
-class Ai extends Player {
+class Ai extends PlayerOne {
   
     constructor(name) {
       super(name);
