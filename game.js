@@ -8,23 +8,23 @@ class Game {
     constructor(gesture, score) {
     this.gesture = gesture;
     this.score = score;  
-    this.playerOne = new Player("PlayerOne");
-    this.playerTwo = new Player("PlayerTwo");
+    this.playerOne = new Player("playerOne");
+    this.playerTwo = new Player("playerTwo");
     this.ai = new Ai("Bob the PC");
     }
     
     runMain() {
       if(this.whoPlays() === 1){
-        console.log (`${ai.name} usually dominates their opponent.`);
+        console.log (`${Ai.name} usually dominates their opponent.`);
         this.aiRandomRolls(ai);
       }
     }
     whoPlays(){
-      let playerOne = new Player("Player One");
+      let playerOne = new Player("playerOne");
       playerOne.name = playerOne.setName();
 
       if(this.playerNumber > 1){
-        let playerTwo = new Player("Player Two")
+        let playerTwo = new Player("playerTwo")
         playerTwo.name  = playerTwo.setName();
         console.log(`Welcome ${playerOne.name} and ${playerTwo.name}.`)
         return 2;
@@ -55,7 +55,7 @@ class Game {
           console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
         }
       }
-      if(player.points >= 1 || otherPlayer.points  >= 1) {
+      if(player.points <= 3 || otherPlayer.points  <= 3) {
         this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
       }
       else if((playerInputOne === 1 || playerInputOne === 2) && (playerInputTwo === 2 || playerInputTwo === 1)) {
@@ -69,7 +69,7 @@ class Game {
           console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
         }
       }
-      if(player.points <= 2 || otherPlayer.points  <= 2) {
+      if(player.points <= 3 || otherPlayer.points  <= 3) {
         this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
     }
     else if((playerInputOne === 2 || playerInputOne === 3) && (playerInputTwo === 3 || playerInputTwo === 2)) {
@@ -83,7 +83,7 @@ class Game {
         console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
       }
     }
-    if(player.points >= 1 || otherPlayer.points  >= 1) {
+    if(player.points <= 3 || otherPlayer.points  <= 3) {
       this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
     }
     else if((playerInputOne === 2 || playerInputOne === 3) && (playerInputTwo === 3 || playerInputTwo === 2)) {
@@ -97,7 +97,7 @@ class Game {
         console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
       }
     }
-    if(player.points >= 1 || otherPlayer.points  >= 1) {
+    if(player.points <= 3 || otherPlayer.points  <= 3) {
       this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
     }
     else if((playerInputOne === 4 || playerInputOne === 5) && (playerInputTwo === 5 || playerInputTwo === 4)) {
@@ -111,7 +111,7 @@ class Game {
         console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
       }
     }
-    if(player.points >= 1 || otherPlayer.points  >= 1) {
+    if(player.points <= 3 || otherPlayer.points  <= 3) {
       this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
     }
     else if((playerInputOne === 2 || playerInputOne === 4) && (playerInputTwo === 4 || playerInputTwo === 2)) {
@@ -125,7 +125,7 @@ class Game {
         console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
       }
     }
-    if(player.points >= 1 || otherPlayer.points  >= 1) {
+    if(player.points <= 3 || otherPlayer.points  <= 3) {
       this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
     }
     else if((playerInputOne === 3 || playerInputOne === 1) && (playerInputTwo === 3 || playerInputTwo === 1)) {
@@ -139,7 +139,7 @@ class Game {
         console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
       }
     }
-    if(player.points >= 1 || otherPlayer.points  >= 1) {
+    if(player.points <= 3 || otherPlayer.points  <= 3) {
       this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
     }
     else if((playerInputOne === 1 || playerInputOne === 4) && (playerInputTwo === 1 || playerInputTwo === 4)) {
@@ -153,7 +153,7 @@ class Game {
         console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
       }
     }
-    if(player.points >= 1 || otherPlayer.points  >= 1) {
+    if(player.points <= 3 || otherPlayer.points  <= 3) {
       this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
     } 
     else if((playerInputOne === 0 || playerInputOne === 4) && (playerInputTwo === 0 || playerInputTwo === 4)) {

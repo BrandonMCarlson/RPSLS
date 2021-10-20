@@ -1,15 +1,15 @@
 //'superclass
-
+let prompt = require('prompt-sync');
 class PlayerOne {
     constructor(name) {
-      this.score = score;
+      this.score = 0;
       this.name = name;
       this.gesture = ["rock", "paper", "scissors", "lizard", "spock"];
     }
     setName(){
       console.log(`${this.name}, enter you name please: `);
-      this.name = prompt();
-      return this.name;
+      newName = prompt();
+      return this.newName;
     }
     gestureChoice(){
       let userInput = prompt(`${this.name}, 0 for rock. 1 for paper. 2 for scissors. 3 for lizard. 4 for spock.`);
