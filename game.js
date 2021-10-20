@@ -1,30 +1,31 @@
 const Player = require('./player');
+const Human = require('./player');
 let prompt = require('prompt-sync');
 const Ai = require('./ai');
-let userInput = prompt();
+const userInput = prompt();
 
 
 class Game {
-    constructor(gesture, score) {
-    this.gesture = gesture;
+    constructor(gestures, score, gesture) {
+    this.gestures = gestures;
     this.score = score;  
     this.playerOne = new Player("playerOne");
-    this.playerTwo = new Player("playerTwo");
-    this.ai = new Ai("Bob the PC");
+    this.playerTwo = new Human("Brandon");
+    this.gesture;
     }
     
     runMain() {
       if(this.whoPlays() === 1){
         console.log (`${Ai.name} usually dominates their opponent.`);
-        this.aiRandomRolls(ai);
+        this.aiRandomRolls(Ai);
       }
     }
     whoPlays(){
-      let playerOne = new Player("playerOne");
+     
       playerOne.name = playerOne.setName();
 
       if(this.playerNumber > 1){
-        let playerTwo = new Player("playerTwo")
+        
         playerTwo.name  = playerTwo.setName();
         console.log(`Welcome ${playerOne.name} and ${playerTwo.name}.`)
         return 2;
@@ -34,11 +35,7 @@ class Game {
         return 1;
       }
     }
-    aiRandomRolls(object){
-      let aiRoll = Math.round(Math.random() * 3);
-      console.log(object.gesture[aiRoll]);
-      return aiRoll;
-    }
+    
     gameRules(player, playerInputOne, playerInputTwo, aiRoll){
       if(playerInputOne === playerInputTwo){
         console.log(`You both chose ${player.gestureChoice}, try again`);
@@ -174,9 +171,13 @@ class Game {
       if(player.points === 3){
         console.log(`${player.name} is the winner!`);
       }
-
+      aiRandomRolls(object);{
+        let aiRoll = Math.round(Math.random() * 3);
+        console.log(object.gesture[aiRoll]);
+        return aiRoll;
+      }
     }
-     
+
   }
    
 }  
