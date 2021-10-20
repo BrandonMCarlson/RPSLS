@@ -1,4 +1,4 @@
-const PlayerOne = require("./player");
+const Player = require("./player");
 
 
 
@@ -26,6 +26,7 @@ class Human extends Player {
           this.gestureChoice();
           break;
 
- }
-
+    }
+}
+}
 module.exports = Human

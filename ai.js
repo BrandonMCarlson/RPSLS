@@ -1,4 +1,4 @@
-const PlayerOne = require("./player");
+const Player = require("./player");
 
 class Ai extends Player {
   

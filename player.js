@@ -2,7 +2,7 @@
 const prompt = require('prompt-sync');
 const userInput = prompt();
 
-class PlayerOne {
+class Player {
     constructor(name) {
       this.score = 0;
       this.name = name;
@@ -17,4 +17,4 @@ class PlayerOne {
   
 
 
-  module.exports = PlayerOne
+  module.exports = Player

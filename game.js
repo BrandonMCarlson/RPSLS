@@ -15,160 +15,157 @@ class Game {
     }
     
     runMain() {
-      if(this.whoPlays() === 1){
-        console.log (`${Ai.name} usually dominates their opponent.`);
-        this.aiRandomRolls(Ai);
+      console.log("welcome to some good ole fashioned rpsls.");
+      this.whoPlays();
+      this.gameRules();
+    }
+    whoPlays() {
+      console.log("Please select 1 for single player. /n please select 2 for multiplayer.");
+      let gameForm = prompt();
+      switch(gameForm) {
+        case "1":
+          this.playerTwo = new Ai();
+          break;
+        case"2":
+        this.playerTwo = new Human("P2");
+          break;
+        default:
+          console.log("invalid choice");
+          return this.whoPlays;
       }
+      
     }
-    whoPlays(){
-     
-      playerOne.name = playerOne.setName();
+    gameRules(){
+      let Player1 = this.playerOne;
+      let Player2 = this.playerTwo;
 
-      if(this.playerNumber > 1){
-        
-        playerTwo.name  = playerTwo.setName();
-        console.log(`Welcome ${playerOne.name} and ${playerTwo.name}.`)
-        return 2;
-    }
-      else{
-        console.log(`Welcome ${playerOne.name}`);
-        return 1;
+      while(Player1.wins < 2 && Player2.wins < 2){
+        Player1.gestureChoice();
+        Player2.gestureChoice();
+        this.showWep();
+      }
+      if(Player1.userInput === Player2.userInput){
+        console.log(`You both chose ${this.gestureChoice}, try again`);
+      
+      }
+      else if((Player1.userInput === 0 || Player1.userInput === 1) && (Player2.userInput === 0 || Player2.userInput === 1)) {
+        console.log("Paper beats rock!");
+        if(Player1.userInput === 1){
+          Player1.score ++
+          console.log(`${player.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+        }
+        else if(Player2.userInput === 1) {
+          Player2.points ++
+          console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
+        }
+      }
+
+      else if((Player1.userInput === 1 || Player1.userInput === 2) && (Player2.userInput === 2 || Player2.userInput === 1)) {
+        console.log("Scissors cuts paper!");
+        if(Player1.userInput === 2){
+          Player1.score ++
+          console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+        }
+        else if(Player2.userInput === 2) {
+          Player2.points ++
+          console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
+        }
+      }
+
+    else if((Player1.userInput === 2 || Player1.userInput === 3) && (Player2.userInput=== 3 || Player2.userInput === 2)) {
+      console.log("Paper covers rock!");
+      if(Player1.userInput === 3){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      }
+      else if(Player2.userInput === 3) {
+        Player2.points ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
     
-    gameRules(player, playerInputOne, playerInputTwo, aiRoll){
-      if(playerInputOne === playerInputTwo){
-        console.log(`You both chose ${player.gestureChoice}, try again`);
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
-      }
-      else if((playerInputOne === 0 || playerInputOne === 1) && (playerInputTwo === 0 || playerInputTwo === 1)) {
-        console.log("Paper beats rock!");
-        if(playerInputOne === 1){
-          player.score ++
-          console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
-        }
-        else if(playerInputTwo === 1) {
-          otherPlayer.points ++
-          console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
-        }
-      }
-      if(player.points <= 3 || otherPlayer.points  <= 3) {
-        this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
-      }
-      else if((playerInputOne === 1 || playerInputOne === 2) && (playerInputTwo === 2 || playerInputTwo === 1)) {
-        console.log("Scissors cuts paper!");
-        if(playerInputOne === 2){
-          player.score ++
-          console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
-        }
-        else if(playerInputTwo === 2) {
-          otherPlayer.points ++
-          console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
-        }
-      }
-      if(player.points <= 3 || otherPlayer.points  <= 3) {
-        this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
-    }
-    else if((playerInputOne === 2 || playerInputOne === 3) && (playerInputTwo === 3 || playerInputTwo === 2)) {
-      console.log("Paper covers rock!");
-      if(playerInputOne === 3){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
-      }
-      else if(playerInputTwo === 3) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
-      }
-    }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());
-    }
-    else if((playerInputOne === 2 || playerInputOne === 3) && (playerInputTwo === 3 || playerInputTwo === 2)) {
+    else if((Player1.userInput === 2 || Player1.userInput === 3) && (Player2.userInput === 3 || Player2.userInput === 2)) {
       console.log("Scissors cchops lizard!");
-      if(playerInputOne === 3){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
+      if(Player1.userInput === 3){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
-      else if(playerInputTwo === 3) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
+      else if(Player2.userInput === 3) {
+        Player2.points ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
-    }
-    else if((playerInputOne === 4 || playerInputOne === 5) && (playerInputTwo === 5 || playerInputTwo === 4)) {
+    
+    else if((Player1.userInput === 4 || Player1.userInput === 5) && (Player2.userInput === 5 || Player2.userInput === 4)) {
       console.log("Lizard poisons spock!");
-      if(playerInputOne === 4){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
+      if(Player1.userInput === 4){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
-      else if(playerInputTwo === 4) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
+      else if(Player2.userInput === 4) {
+        Player2.points ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
-    }
-    else if((playerInputOne === 2 || playerInputOne === 4) && (playerInputTwo === 4 || playerInputTwo === 2)) {
+    
+    else if((Player1.userInput === 2 || Player1.userInput=== 4) && (Player2.userInput === 4 || Player2.userInput === 2)) {
       console.log("Spock smashes scissors");
-      if(playerInputOne === 2){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
+      if(Player1.userInput === 2){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
       else if(playerInputTwo === 2) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
+        Player2.userInput ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
-    }
-    else if((playerInputOne === 3 || playerInputOne === 1) && (playerInputTwo === 3 || playerInputTwo === 1)) {
+   
+    else if((Player1.userInput === 3 || Player1.userInput === 1) && (Player2.userInput === 3 || Player2.userInput === 1)) {
       console.log("Lizard eats Paper");
-      if(playerInputOne === 3){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
+      if(Player1.userInput === 3){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
-      else if(playerInputTwo === 3) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
+      else if(Player2.userInput === 3) {
+        Player2.points ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
-    }
-    else if((playerInputOne === 1 || playerInputOne === 4) && (playerInputTwo === 1 || playerInputTwo === 4)) {
+   
+    else if((Player1.userInput === 1 || Player1.userInput === 4) && (Player2.userInput === 1 || Player2.userInput === 4)) {
       console.log("Paper disproves Spock!");
-      if(playerInputOne === 1){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
+      if(Player1.userInput === 1){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
-      else if(playerInputTwo === 1) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
+      else if(Player2.userInput === 1) {
+        Player2.points ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
-    } 
-    else if((playerInputOne === 0 || playerInputOne === 4) && (playerInputTwo === 0 || playerInputTwo === 4)) {
+    
+    else if((Player1.userInput === 0 || Player1.userInput === 4) && (Player2.userInput === 0 || Player2.userInput === 4)) {
       console.log("Spock vaprizes Rock!");
-      if(playerInputOne === 4){
-        player.score ++
-        console.log(`${player.name} score a point. total points for each team are /n ${player.points} /n ${otherPlayer.points}`);
+      if(Player1.userInput === 4){
+        Player1.score ++
+        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
-      else if(playerInputTwo === 4) {
-        otherPlayer.points ++
-        console.log(`${otherPlayer.name} scores a point. total points for each team are /n ${player.points} /n ${otherPlayer.points} `);
+      else if(Player2.userInput === 4) {
+        Player2.points ++
+        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
       }
     }
-    if(player.points <= 3 || otherPlayer.points  <= 3) {
-      this.gameRules(this.playerOne, this.playerOne.gestureChoice(), this.playerTwo, this.playerTwo.gestureChoice());  
+    
+    showWep();{
+      let Player1 = this.playerOne;
+      let Player2 = this.playerTwo;
+      console.log(`${Player1.name} selected: ${Player1.gestureChoice}`);
+      console.log(`${Player2.name} selected: ${Player2.gestureChoice}`);
     }
+    
+    
     gameWinner();{
-      if(player.points === 3){
+      if(Player.points === 3){
         console.log(`${player.name} is the winner!`);
       }
       aiRandomRolls(object);{
