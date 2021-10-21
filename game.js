@@ -1,17 +1,14 @@
 const Player = require('./player');
-const Human = require('./player');
+const Human = require('./Human');
 const prompt = require("prompt-sync")()
 const Ai = require('./ai');
 
 
 
 class Game {
-  constructor(gestures, score, gesture) {
-    this.gestures = gestures;
-    this.score = score;
-    this.playerOne = new Player("playerOne");
+  constructor() {
+    this.playerOne = new Human("playerOne");
     this.playerTwo = new Human("Brandon");
-    this.gesture;
   }
 
   runMain() {
@@ -27,6 +24,7 @@ class Game {
         this.playerTwo = new Ai("Steve the PC");
         break;
       case "2":
+        this.playerOne = new Human("P1");
         this.playerTwo = new Human("P2");
         break;
       default:
@@ -45,124 +43,133 @@ class Game {
       Player2.gestureChoice();
       this.showWep();
     
-    if (Player1.gesture === Player2.gesture) {
-      console.log(`You both chose ${this.gestureChoice}, try again`);
+      if (Player1.gesture === Player2.gesture) {
+        console.log(`You both chose ${this.gestureChoice}, try again`);
 
-    }
-    else if ((Player1.gesture === 0 || Player1.gesture === 1) && (Player2.gesture === 0 || Player2.gesture === 1)) {
-      console.log("Paper beats rock!");
-      if (Player1.gesture === 1) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
       }
-      else if (Player2.gesture === 1) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
+      else if ((Player1.gesture === "rock" || Player1.gesture === "paper") && (Player2.gesture === "rock" || Player2.gesture === "paper")) {
+        console.log("Paper beats rock!");
+        if (Player1.gesture === "paper") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "paper") {
+          Player2.score++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-    }
 
-    else if ((Player1.gesture === 1 || Player1.gesture === 2) && (Player2.gesture === 2 || Player2.gesture === 1)) {
-      console.log("Scissors cuts paper!");
-      if (Player1.gesture === 2) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "scissors" || Player1.gesture === "paper") && (Player2.gesture === "scissors" || Player2.gesture === "paper")) {
+        console.log("Scissors cuts paper!");
+        if (Player1.gesture === "scissors") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "scissors") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 2) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 2 || Player1.gesture === 3) && (Player2.gesture === 3 || Player2.gesture === 2)) {
-      console.log("Paper covers rock!");
-      if (Player1.gesture === 3) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "lizard" || Player1.gesture === "rock") && (Player2.gesture === "lizard"|| Player2.gesture === "rock")) {
+        console.log("Rock crushes lizard!");
+        if (Player1.gesture === "rock") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "rock") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 3) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 2 || Player1.gesture === 3) && (Player2.gesture === 3 || Player2.gesture === 2)) {
-      console.log("Scissors cchops lizard!");
-      if (Player1.gesture === 3) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "scissors" || Player1.gesture === "lizard") && (Player2.gesture === "scissors" || Player2.gesture === "lizard")) {
+        console.log("Scissors cchops lizard!");
+        if (Player1.gesture === "scissors") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "scissors") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 3) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 4 || Player1.gesture === 5) && (Player2.gesture === 5 || Player2.gesture === 4)) {
-      console.log("Lizard poisons spock!");
-      if (Player1.gesture === 4) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "lizard" || Player1.gesture === "spock") && (Player2.gesture === "lizard" || Player2.gesture === "spock")) {
+        console.log("Lizard poisons spock!");
+        if (Player1.gesture === "lizard") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "lizard") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 4) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 2 || Player1.gesture === 4) && (Player2.gesture === 4 || Player2.gesture === 2)) {
-      console.log("Spock smashes scissors");
-      if (Player1.gesture === 2) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "spock" || Player1.gesture === "scissors") && (Player2.gesture === "spock" || Player2.gesture === "scissors")) {
+        console.log("Spock smashes scissors");
+        if (Player1.gesture === "spock") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "spock") {
+          Player2.gesture++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 2) {
-        Player2.gesture++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 3 || Player1.gesture === 1) && (Player2.gesture === 3 || Player2.gesture === 1)) {
-      console.log("Lizard eats Paper");
-      if (Player1.gesture === 3) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "paper" || Player1.gesture === "lizard") && (Player2.gesture === "paper" || Player2.gesture === "lizard")) {
+        console.log("Lizard eats Paper");
+        if (Player1.gesture === "lizard") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "lizard") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 3) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 1 || Player1.gesture === 4) && (Player2.gesture === 1 || Player2.gesture === 4)) {
-      console.log("Paper disproves Spock!");
-      if (Player1.gesture === 1) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
+      else if ((Player1.gesture === "paper" || Player1.gesture === "spock") && (Player2.gesture === "paper" || Player2.gesture === "spock")) {
+        console.log("Paper disproves Spock!");
+        if (Player1.gesture === "paper") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "paper") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
       }
-      else if (Player2.gesture === 1) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
-      }
-    }
 
-    else if ((Player1.gesture === 0 || Player1.gesture === 4) && (Player2.gesture === 0 || Player2.gesture === 4)) {
-      console.log("Spock vaprizes Rock!");
-      if (Player1.gesture === 4) {
-        Player1.score++
-        console.log(`${Player1.name} score a point. total points for each team are /n ${Player1.points} /n ${Player2.points}`);
-      }
-      else if (Player2.gesture === 4) {
-        Player2.points++
-        console.log(`${Player2.name} scores a point. total points for each team are /n ${Player1.points} /n ${Player2.points} `);
+      else if ((Player1.gesture === "spock" || Player1.gesture === "rock") && (Player2.gesture === "rock" || Player2.gesture === "spock")) {
+        console.log("Spock vaprizes Rock!");
+        if (Player1.gesture === "spock") {
+          Player1.score++
+          console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+        }
+        else if (Player2.gesture === "spock") {
+          Player2.points++
+          console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+        }
+        else if ((Player1.gesture === "rock" || Player1.gesture === "scissors") && (Player2.gesture === "rock" || Player2.gesture === "scissors")) {
+          console.log("Rock beats scissors!");
+          if (Player1.gesture === "rock") {
+            Player1.score++
+            console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
+          }
+          else if (Player2.gesture === "rock") {
+            Player2.score++
+            console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
+          }
+        }
       }
     }
-  }
 }
   showWep() {
-    let Player1 = this.playerOne;
-    let Player2 = this.playerTwo;
-    console.log(`${Player1.name} selected: ${Player1.gesture}`);
-    console.log(`${Player2.name} selected: ${Player2.gesture}`);
+    console.log(`${this.playerOne.name} selected: ${this.playerOne.gesture}`);
+    console.log(`${this.playerTwo.name} selected: ${this.playerTwo.gesture}`);
   }
 
 

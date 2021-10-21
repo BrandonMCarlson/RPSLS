@@ -9,7 +9,7 @@ class Ai extends Player {
   gestureChoice() {
     let gest = this.gestures;
     let gestChoice = Math.floor(Math.random() * gest.length)
-    this.chosenGesture = gest[gestChoice];
+    this.gesture = gest[gestChoice];
   }
 }
 
