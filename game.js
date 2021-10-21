@@ -44,7 +44,7 @@ class Game {
       this.showWep();
     
       if (Player1.gesture === Player2.gesture) {
-        console.log(`You both chose ${this.gestureChoice}, try again`);
+        console.log(`You both chose ${this.gesture}, try again`);
 
       }
       else if ((Player1.gesture === "rock" || Player1.gesture === "paper") && (Player2.gesture === "rock" || Player2.gesture === "paper")) {
@@ -66,7 +66,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "scissors") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -78,7 +78,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "rock") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -90,7 +90,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "scissors") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -102,7 +102,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "lizard") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -114,7 +114,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "spock") {
-          Player2.gesture++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -126,7 +126,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "lizard") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -138,7 +138,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "paper") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
       }
@@ -150,7 +150,7 @@ class Game {
           console.log(`${Player1.name} score a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score}`);
         }
         else if (Player2.gesture === "spock") {
-          Player2.points++
+          Player2.score++
           console.log(`${Player2.name} scores a point. total points for each team are P1: ${Player1.score} P2: ${Player2.score} `);
         }
         else if ((Player1.gesture === "rock" || Player1.gesture === "scissors") && (Player2.gesture === "rock" || Player2.gesture === "scissors")) {
