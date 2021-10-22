@@ -15,9 +15,10 @@ class Game {
     console.log("welcome to some good ole fashioned rpsls.");
     this.whoPlays();
     this.gameRules();
+    this.gameWinner();
   }
   whoPlays() {
-    console.log("Please select 1 for single player.  please select 2 for multiplayer.");
+    console.log("Please select 1 for single player.  please select 2 for multiplayer. best of 3!");
     let gameForm = prompt();
     switch (gameForm) {
       case "1":
@@ -42,6 +43,7 @@ class Game {
       Player1.gestureChoice();
       Player2.gestureChoice();
       this.showWep();
+      
     
       if (Player1.gesture === Player2.gesture) {
         console.log(`You both chose ${this.gesture}, try again`);
@@ -170,14 +172,7 @@ class Game {
   showWep() {
     console.log(`${this.playerOne.name} selected: ${this.playerOne.gesture}`);
     console.log(`${this.playerTwo.name} selected: ${this.playerTwo.gesture}`);
-  }
-
-
-  gameWinner() {
-    if (Player.points === 3) {
-      console.log(`${Player.name} is the winner!`);
-    }
-
+  
   }
 
 }
